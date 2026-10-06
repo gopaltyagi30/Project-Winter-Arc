@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* =========================
+   PAGE
+========================= */
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  color: white;
+}
+
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.text-enter {
+  position: absolute;
+
+  width: min(55vw, 700px);
+  height: auto;
+
+  left: 50%;
+  top: -100vh;
+
+  transform: translateX(-50%);
+
+  animation: textEnter 2.5s ease-out forwards;
+}
+
+@keyframes textEnter {
+  from {
+    top: -100vh;
+    opacity: 0;
+  }
+
+  to {
+    top: 43%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.life-button {
+  position: absolute;
+
+  left: 50%;
+  top: 68%;
+
+  transform: translateX(-50%);
+
+  z-index: 10;
+
+  padding: 14px 34px;
+
+  background: white;
+  color: black;
+
+  border: none;
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  animation: buttonEnter 0.8s ease-out 2.7s forwards;
+
+  transition: all 0.3s ease;
+}
+
+
+/* Button entrance */
+
+@keyframes buttonEnter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
+/* Hover */
+
+.life-button:hover {
+  background: black;
+  color: white;
+  border: 1px solid white;
+
+  transform: translate(-50%, -3px);
+
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+
+/* Click */
+
+.life-button:active {
+  transform: translate(-50%, 0);
+}
