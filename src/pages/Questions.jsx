@@ -7,6 +7,7 @@ const Questions = () => {
     "What is your biggest weakness?",
     "What is the one goal you absolutely want to achieve?",
     "Who do you want to become?",
+    "Whats your biggest fear"
   ];
   const [currentQuestion, setCurrentQuestion] = useState(0);
   return (
