@@ -14,7 +14,7 @@ const Landing = () => {
 
       {/* Button */}
       <button className="life-button" onClick={()=>navigate("/questions")}>
-        Change My Life
+        Upgrade My Life
       </button>
 
     </main>
