@@ -11,7 +11,7 @@ const Questions = () => {
 
     {
       question: "How much time can you dedicate every day?",
-      options: ["1 hour", "2–3 hours", "4–5 hours", "5+ hours"],
+      options: ["1 hour", "2–3 hours", "4–5 hours", "6+ hours"],
     },
 
     {
