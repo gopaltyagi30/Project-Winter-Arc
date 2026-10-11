@@ -2,14 +2,32 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyStore } from "../context/AuthContext";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const {loginUser,setLoginUser,registeredUsers} = useContext(MyStore)
+const {  handleSubmit,register,formState:{errors},reset,} = useForm();
+  const {setLoginUser,registeredUsers} = useContext(MyStore)
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const formSubmit = (data) => {
+    
+    console.log(data);
+    setLoginUser(data);
+    localStorage.setItem("loginUser",JSON.stringify(data))
+    let user = registeredUsers.find((val)=>{
+        return val.email === data.email && val.password === data.password;
+    })
+    if(!user){
+     toast.error("Invalid Email or Password");
+      return;
+    }
+   
+      toast.success("Login Sucessfully");
+      navigate("/main");
+    
+    
     
   };
 
@@ -46,7 +64,7 @@ const Login = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit(formSubmit)} className="space-y-6">
 
           {/* Email */}
           <div>
@@ -55,6 +73,7 @@ const Login = () => {
             </label>
 
             <input
+            {...register("email")}
               type="email"
               name="email"
               placeholder="you@example.com"
@@ -81,6 +100,7 @@ const Login = () => {
             </div>
 
             <input
+            {...register("password")}
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"

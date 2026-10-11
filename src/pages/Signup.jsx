@@ -2,16 +2,26 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyStore } from "../context/AuthContext";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Signup = () => {
-  const {registeredUsers, setRegiteredUsers} = useContext(MyStore);
+const {  handleSubmit,register,formState:{errors},reset,} = useForm();
+  const {registeredUsers, setRegisteredUsers} = useContext(MyStore);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-  };
+ const formSubmit = (data) =>{
+  console.log(data);
+  let arr = [...registeredUsers,data]
+
+  setRegisteredUsers(arr);
+    localStorage.setItem("registeredUsers",JSON.stringify(arr))
+  toast.success("Account Created !")
+
+  reset();
+  
+ }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-black text-white flex items-center justify-center px-5 py-12">
@@ -47,7 +57,7 @@ const Signup = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
 
           {/* Name */}
           <div>
@@ -56,6 +66,7 @@ const Signup = () => {
             </label>
 
             <input
+            {...register("name")}
               type="text"
               name="name"
               placeholder="Your name"
@@ -72,6 +83,7 @@ const Signup = () => {
             </label>
 
             <input
+            {...register("email")}
               type="email"
               name="email"
               placeholder="you@example.com"
@@ -98,11 +110,12 @@ const Signup = () => {
             </div>
 
             <input
+            {...register("password")}
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Create a strong password"
               autoComplete="new-password"
-              minLength={8}
+              minLength={6}
               required
               className="w-full bg-transparent border border-white/15 px-4 py-4 text-sm text-white placeholder:text-gray-700 outline-none focus:border-white/60 transition"
             />
