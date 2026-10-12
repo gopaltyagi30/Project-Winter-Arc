@@ -8,7 +8,7 @@ const Landing = () => {
       {/* Text */}
       <img
         src="/text.png"
-        alt="Are you winning, my son?"
+        alt="Motivational quote"
         className="text-enter"
       />
 

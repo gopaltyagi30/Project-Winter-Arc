@@ -150,7 +150,7 @@ const {  handleSubmit,register,formState:{errors},reset,} = useForm();
       </div>
 
       <p className="absolute bottom-5 text-[10px] tracking-[0.3em] text-gray-700">
-        DISCIPLINE OVER MOTIVATION
+        DISCIPLINE OVER MOTIVATION !
       </p>
     </main>
   );
