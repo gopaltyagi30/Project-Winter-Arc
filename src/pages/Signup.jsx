@@ -150,7 +150,7 @@ const {  handleSubmit,register,formState:{errors},reset,} = useForm();
         <div className="flex items-center gap-4 my-7">
           <div className="h-px flex-1 bg-white/10" />
           <span className="text-[10px] tracking-[0.25em] text-gray-600">
-            YOUR ARC STARTS HERE
+            YOUR ARC STARTS HERE --
           </span>
           <div className="h-px flex-1 bg-white/10" />
         </div>
